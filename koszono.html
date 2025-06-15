@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Köszönjük!</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="logo.png" /> <!-- Cseréld a saját logódra -->
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Fejléc -->
+  <header class="bg-gray-900 text-white py-4 shadow">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <img src="logo2.png" alt="WOXWirtual logo" class="h-8 w-auto"> <!-- Logo ide -->
+         <span class="text-pressure" id="pressure">WOX Wirtual</span>
+      </div>
+      <nav class="space-x-4">
+        <a href="wox.html" class="hover:text-gray-600">Vissza a főoldalra</a>
+      </nav>
+    </div>
+  </header>
+ <style>
+    .text-pressure {
+      display: inline-block;
+      perspective: 500px;
+      cursor: pointer;
+    }
+
+    .text-pressure span {
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+  </style>
+<script>
+    const container = document.getElementById('pressure');
+    const text = container.textContent;
+    container.textContent = ''; // törlés
+
+    text.split('').forEach(char => {
+      const span = document.createElement('span');
+      span.textContent = char;
+      container.appendChild(span);
+    });
+
+    container.addEventListener('mouseenter', () => {
+      container.querySelectorAll('span').forEach((span, idx) => {
+        const delay = idx * 30;
+        setTimeout(() => {
+          span.style.transform = 'translateZ(-20px) scale(1.1)';
+        }, delay);
+      });
+    });
+
+    container.addEventListener('mouseleave', () => {
+      container.querySelectorAll('span').forEach((span, idx) => {
+        const delay = idx * 30;
+        setTimeout(() => {
+          span.style.transform = 'translateZ(0) scale(1)';
+        }, delay);
+      });
+    });
+  </script>
+  <!-- Köszönő szekció -->
+  <main class="flex flex-col items-center justify-center text-center min-h-screen px-4 bg-white">
+    <h1 class="text-4xl font-extrabold mb-4 text-black">Köszönjük, hogy írtál nekünk!</h1>
+    <p class="text-lg text-gray-600 mb-8 max-w-xl">Az üzenetedet megkaptuk, és hamarosan felvesszük veled a kapcsolatot. Addig is böngészd bátran a weboldalunkat!</p>
+    <a href="wox.html" class="bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition text-lg">
+      Vissza a főoldalra
+    </a>
+  </main>
+
+</body>
+</html>

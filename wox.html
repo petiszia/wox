@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WOX Wirtual - Premium Fitness & Wellness</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #1a1a2e 0%, #000000 50%, #0f3460 100%);
+        }
+        .workout-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: scale(1.03);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <body class="font-sans antialiased text-gray-800">
+  <!-- Header/Navigation -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <!-- Bal oldal: logó és animált szöveg -->
+      <div class="flex items-center">
+        <a href="#" class="text-2xl font-bold texti-black flex items-center">
+         <img src="logo.png" alt="woxlogo" class="w-[30x] md:w-[30px] object-contain drop-shadow-2xl">
+          <span class="text-pressure" id="pressure">WOX Wirtual</span>
+        </a>
+      </div>
+
+      <!-- Jobb oldal: navigáció -->
+      <nav class="hidden md:flex space-x-8">
+        <a href="#wox" class="nav-link text-gray-700 hover:text-black">WOX</a>
+        <a href="#wox-plus" class="nav-link text-gray-700 hover:text-black">WOX+</a>
+        <a href="#diet" class="nav-link text-gray-700 hover:text-black">WOXDiet</a>
+        <a href="#tv" class="nav-link text-gray-700 hover:text-black">WOXTV</a>
+        <a href="#subscriptions" class="nav-link text-gray-700 hover:text-black-">Subscriptions</a>
+        <a href="#family" class="nav-link text-gray-700 hover:text-black">Family Tree</a>
+      </nav>
+    </div>
+  </header>
+
+  <style>
+    .text-pressure {
+      display: inline-block;
+      perspective: 500px;
+      cursor: pointer;
+    }
+
+    .text-pressure span {
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+  </style>
+
+  <script>
+    const container = document.getElementById('pressure');
+    const text = container.textContent;
+    container.textContent = ''; // törlés
+
+    text.split('').forEach(char => {
+      const span = document.createElement('span');
+      span.textContent = char;
+      container.appendChild(span);
+    });
+
+    container.addEventListener('mouseenter', () => {
+      container.querySelectorAll('span').forEach((span, idx) => {
+        const delay = idx * 30;
+        setTimeout(() => {
+          span.style.transform = 'translateZ(-20px) scale(1.1)';
+        }, delay);
+      });
+    });
+
+    container.addEventListener('mouseleave', () => {
+      container.querySelectorAll('span').forEach((span, idx) => {
+        const delay = idx * 30;
+        setTimeout(() => {
+          span.style.transform = 'translateZ(0) scale(1)';
+        }, delay);
+      });
+    });
+  </script>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-white">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#wox" class="py-2 text-gray-700 hover:text-indigo-600">WOX</a>
+                <a href="#wox-plus" class="py-2 text-gray-700 hover:text-indigo-600">WOX+</a>
+                <a href="#diet" class="py-2 text-gray-700 hover:text-indigo-600">WOXDiet</a>
+                <a href="#tv" class="py-2 text-gray-700 hover:text-indigo-600">WOXTV</a>
+                <a href="#subscriptions" class="py-2 text-gray-700 hover:text-indigo-600">Subscriptions</a>
+                <a href="#family" class="py-2 text-gray-700 hover:text-indigo-600">Family Tree</a>
+                <div class="py-4">
+                    <a href="#login" class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition">Login</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+<!-- fejléc -->
+<section class="hero-gradient text-white relative overflow-hidden">
+    <div class="container mx-auto px-4 py-20 md:py-32 flex flex-col md:flex-row items-center relative z-10">
+        <div class="md:w-1/2 mb-10 md:mb-0">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">MARKÁNS KÜLÖNC ÚJÍTÓ</h1>
+            <p class="text-xl mb-8 text-indigo-100">Villámidejű edzések, személyi edző stúdiója & 💎 EDGE®️ OkosOtthon életmód~menedzser.</p>
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#subscriptions" class="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition text-center">Kezd el!</a>
+                <a href="https://www.facebook.com/woxwirtual/videos/1074972423973879?locale=hu_HU" class="border border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition flex items-center justify-center">
+                    <i class="fas fa-play mr-2"></i> Videó
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- kép -->
+  <div class="absolute bottom-0 right-24 md:right-40 z-0">
+    <img src="modellek.png" alt="Fitness Models" class="w-[420px] md:w-[480px] object-contain drop-shadow-2xl">
+</div>
+</section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Szolgáltatásaink</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- WOX Card -->
+                <div id="wox" class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition workout-card">
+                    <div class="text-black mb-4">
+                        <i class="fas fa-running text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">WOX</h3>
+                    <p class="text-gray-600 mb-4">A világ legrövidebb edzésmódszerei.</p>
+                    <a href="#" class="text-black font-semibold hover:text-black flex items-center">
+                        További információ <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- WOX+ Card -->
+                <div id="wox-plus" class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition workout-card">
+                    <div class="text-black mb-4">
+                        <i class="fas fa-star text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">WOX+</h3>
+                    <p class="text-gray-600 mb-4">Betekintés a kulisszákba.</p>
+                    <a href="#" class="text-black font-semibold hover:text-back flex items-center">
+                       Igényes géppark. <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- WOXDiet Card -->
+                <div id="diet" class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition workout-card">
+                    <div class="text-black mb-4">
+                        <i class="fas fa-utensils text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">WOXDiet</h3>
+                    <p class="text-gray-600 mb-4">Életmod és étkezés.</p>
+                    <a href="#" class="text-black font-semibold hover:text-black flex items-center">
+                        Bármikor, bárhonnan. <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- WOXTV Card -->
+                <div id="tv" class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition workout-card">
+                    <div class="text-black mb-4">
+                        <i class="fas fa-tv text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">WOXTV</h3>
+                    <p class="text-gray-600 mb-4">Ne olvasd, nézd videóban.</p>
+                    <a href="#" class="text-black font-semibold hover:text-black flex items-center">
+                        Nézd meg most! <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+<section id="video" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                <h2 class="text-3xl font-bold mb-6">Tapasztald meg a WOX Virtual élményt</h2>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-iblack mt-1 mr-3"></i>
+                        <span>Auto-human controll</span> 
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-black mt-1 mr-3"></i>
+                        <span>Bluetooth fejhallgatóval</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-black mt-1 mr-3"></i>
+                        <span>Video streamimg</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-black mt-1 mr-3"></i>
+                        <span>13 perces, egyedülálló tervezés</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="md:w-1/2 relative">
+                <div class="aspect-w-16 aspect-h-9 bg-gray-200 rounded-xl overflow-hidden shadow-lg">
+                    <!-- Thumbnail -->
+                    <img id="videoThumbnail" src="videoframe_0.png" 
+                         alt="Fitness Video" 
+                         class="w-full h-full object-cover">
+
+                    <!-- Hidden video -->
+                    <video id="videoPlayer" class="w-full h-full object-cover hidden" controls>
+                        <source src="Facebook-Virtual-Trainers.mp4" type="video/mp4">
+                        A böngésződ nem támogatja a videólejátszást.
+                    </video>
+
+                    <!-- Play button -->
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <button onclick="playVideo()" class="bg-black hover:bg-gray-600 text-white rounded-full w-16 h-16 flex items-center justify-center transition transform hover:scale-110">
+                            <i class="fas fa-play text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+function playVideo() {
+    const thumbnail = document.getElementById('videoThumbnail');
+    const video = document.getElementById('videoPlayer');
+    
+    thumbnail.style.display = 'none';       // Eltünteti a képet
+    video.classList.remove('hidden');       // Megjeleníti a videót
+    video.play();                           // Elindítja a lejátszást
+}
+</script>
+
+
+    <!-- Subscription Plans -->
+    <section id="subscriptions" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Előfizetések</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Basic Plan -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold mb-2">WOX Basic</h3>
+                        <p class="text-gray-600 mb-6">Essential access to our platform</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">$9.99</span>
+                            <span class="text-gray-500">/month</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Access to basic workouts</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Standard nutrition guides</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Limited WOXTV content</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-times text-gray-400 mt-1 mr-3"></i>
+                                <span class="text-gray-400">No personalized coaching</span>
+                            </li>
+                        </ul>
+                        <button class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 py-3 rounded-lg font-semibold transition">
+                            Get Started
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Popular Plan -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform scale-105 border-2 border-black">
+                    <div class="bg-black text-white text-center py-2">
+                        <span class="font-semibold">LEGNÉPSZERŰBB</span>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold mb-2">WOX+ Premium</h3>
+                        <p class="text-gray-600 mb-6">Complete fitness and wellness package</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">$24.99</span>
+                            <span class="text-gray-500">/month</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>All basic features plus:</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Advanced workout programs</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Personalized diet plans</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Full WOXTV access</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Monthly coaching session</span>
+                            </li>
+                        </ul>
+                        <button class="w-full bg-black hover:bg-black text-white py-3 rounded-lg font-semibold transition">
+                            Get Premium
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Family Plan -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold mb-2">WOX Family</h3>
+                        <p class="text-gray-600 mb-6">For households and groups</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">$39.99</span>
+                            <span class="text-gray-500">/month</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>All premium features</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Up to 5 family members</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Family nutrition plans</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Group workout tracking</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Quarterly family coaching</span>
+                            </li>
+                        </ul>
+                        <button class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 py-3 rounded-lg font-semibold transition">
+                            Family Plan
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Vélemények</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Vélemények a WOX-ról.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 p-8 rounded-xl testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://lh3.googleusercontent.com/a-/ALV-UjXZm-fF8XaiT0Bc8TWaFxmDKCWcKOlSJBL04CgmtKBU3vapBEY=w72-h72-p-rp-mo-br100" 
+                             alt="Sarah J." 
+                             class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Zoltán G.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"A hely tiszta, igényes! Az edzők felkészültek és maximálisan igyekeznek kihozni mindenkiből a legtöbbet! Jó a hangulat ami a fiúk humorérzékének köszönhető! 🤜🏻🤛🏻"</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 p-8 rounded-xl testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://lh3.googleusercontent.com/a/ACg8ocIsAzXf_Ax_U2hTwU1EnU6YXaotq5XpERxsTKcvCW1_3LELRA=w72-h72-p-rp-mo-br100" 
+                             alt="Michael T." 
+                             class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Judit N.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Gyors, hatékony és modern edzések, profi edzőkkel, a kedvességükről és figyelmességükről nem is beszélve. Az országban egyedülálló virtuális edzések, amit nem lehet elmesélni, át kell élni. Mindenkinek csak ajánlani tudom!."</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-50 p-8 rounded-xl testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://lh3.googleusercontent.com/a-/ALV-UjWvGjF2evw4LoCD1JByWEcHIMEs8TAuv6dSqNhxokZp8FW6v9KD=w72-h72-p-rp-mo-br100" 
+                             alt="Emily R." 
+                             class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Benjamin R.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Fantasztikus Edzők, mindig hatalmas élmény ott edzeni és jobbnál jobb és változatos programok vannak. Sose lehet megunni és mindig naprakészen várnak. Ők segítettek az életmódváltásban.Mindenkinek ajánlani tudom 😁😊"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Family Tree Section -->
+<section id="family" class="py-20 bg-indigo-50">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-20">
+      <h2 class="text-4xl font-extrabold text-gray-900 mb-4">Az EDZŐK</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <!-- Profile Card 1 -->
+      <div class="relative bg-white rounded-2xl shadow-2xl overflow-hidden transform transition-all hover:scale-[1.03] hover:shadow-indigo-300 hover:rotate-[-0.5deg]">
+        <div class="h-32 bg-gradient-to-r from-black via-gray-600 to-black animate-gradient-x"></div>
+        <div class="p-6 pt-0 -mt-12 flex flex-col items-center">
+          <img class="w-24 h-24 rounded-full border-4 border-white shadow-lg" src="https://scontent.fbud7-3.fna.fbcdn.net/v/t39.30808-1/491807082_9513335848753316_9203349058296478518_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=107&ccb=1-7&_nc_sid=1d2534&_nc_ohc=N_H1F5t5xiEQ7kNvwHHi38N&_nc_oc=Adkn2hc4yoNfDN_9wPL3s9lpA9rW92Jjt34RtT2OcMZnDxRbEzbMAMcIy9N4O46pnrAIfUmWu9_JbXR_U6UJqvPG&_nc_zt=24&_nc_ht=scontent.fbud7-3.fna&_nc_gid=7qb0JiMshGVUk3FJ98cIdg&oh=00_AfM7yQcQquYWnBtblZqCCevanHPgNu-qqdy1RJH62InBMg&oe=6853B5A1" alt="Founder">
+          <h3 class="mt-4 text-xl font-semibold text-gray-900">Gulyás Tibor</h3>
+          <p class="text-indigo-600 font-medium mb-2">Lorem Ipsum</p>
+          <p class="text-gray-600 text-center text-sm italic">“Lorem Ipsum.”</p>
+        </div>
+      </div>
+
+      <!-- Profile Card 2 -->
+      <div class="relative bg-white rounded-2xl shadow-2xl overflow-hidden transform transition-all hover:scale-[1.03] hover:shadow-indigo-300 hover:rotate-[0.5deg]">
+        <div class="h-32 bg-gradient-to-r from-gray-600 via-black to-gray-600 animate-gradient-x"></div>
+        <div class="p-6 pt-0 -mt-12 flex flex-col items-center">
+          <img class="w-24 h-24 rounded-full border-4 border-white shadow-lg" src="https://scontent.fbud7-4.fna.fbcdn.net/v/t39.30808-1/462618518_8309152059153042_2182035105019636008_n.jpg?stp=c0.75.1170.1170a_dst-jpg_s200x200_tt6&_nc_cat=111&ccb=1-7&_nc_sid=e99d92&_nc_ohc=37v-WhaTLMcQ7kNvwHVSzxv&_nc_oc=AdnKSBcPcuU2kBE0qtx1OFmSxfO5252NEdaCdiihhJmYTqRcKQOXW0XGLQGHOb9RSqmnjytOLZgroVX4xSWhZT61&_nc_zt=24&_nc_ht=scontent.fbud7-4.fna&_nc_gid=GyLEEKH8J2zj8xUAY9jP9A&oh=00_AfP47xFI4PC9FSM323IDEiV_WG0maKfbYuskQN_m9OMB3w&oe=6853E14E" alt="Nutrition Expert">
+          <h3 class="mt-4 text-xl font-semibold text-gray-900">Rektor Armandó</h3>
+          <p class="text-indigo-600 font-medium mb-2">Lorem Ipsum</p>
+          <p class="text-gray-600 text-center text-sm italic">“Lorem Ipsum.”</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes gradient-x {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  .animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient-x 6s ease infinite;
+  }
+</style>
+
+
+            
+            <div class="mt-16 text-center">
+                <h3 class="text-2xl font-bold mb-6">Kapcsolat</h3>
+                <div class="flex justify-center space-x-4">
+                    
+                    <a href="https://www.facebook.com/woxwirtual?locale=hu_HU" class="bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 rounded-full flex items-center justify-center">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="mailto:hello@woxwirtual.com" class="bg-red-600 hover:bg-red-700 text-white w-12 h-12 rounded-full flex items-center justify-center">
+                       <i class="fa-solid fa-envelope"></i>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Download -->
+    <section class="py-16 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h2 class="text-3xl font-bold mb-6">Töltsd le az applikációt!</h2>
+                    <p class="text-gray-300 mb-8">Gyors és egyszerű időpontfoglalás.</p>
+                     
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="https://apps.apple.com/hu/app/wox-wirtual/id6450411161?l=hu" class="bg-gray-800 hover:bg-gray-700 px-6 py-3 rounded-lg flex items-center">
+                            <i class="fab fa-apple text-3xl mr-3"></i>
+                            <div>
+                                <div class="text-xs">Download on the</div>
+                                <div class="font-semibold">App Store</div>
+                            </div>
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.altegio.mobile.s755357&hl=hu" class="bg-gray-800 hover:bg-gray-700 px-6 py-3 rounded-lg flex items-center">
+                            <i class="fab fa-google-play text-3xl mr-3"></i>
+                            <div>
+                                <div class="text-xs">Get it on</div>
+                                <div class="font-semibold">Google Play</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="woxapp.jpg" 
+                         alt="WOX Wirtual App" 
+                         class="max-w-xs w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4">Lépj velünk kapcsolatba!</h2>
+                    <p class="text-gray-600">Kérdéseid vannak? Csapatunk készen áll, hogy segítsen neked!</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">   ‍   </h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-envelope text-black mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-semibold">Email</h4>
+                                    <p class="text-gray-600">hello@woxwirtual.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-phone-alt text-black mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-semibold">Telefonszám</h4>
+                                    <p class="text-gray-600">+36705588898</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-black mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-semibold">Helyszín</h4>
+                                <p>
+  <a href="https://www.google.com/maps?q=WOX,+Nyíregyháza,+Szegfű+u.+67,+4400"
+     target="_blank"
+     class="text-gray-600 hover:text-blue-600 transition-colors duration-200">
+   Nyíregyháza, Szegfű u. 67, 4400
+  </a>
+</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 <div>
+ <form action="https://formspree.io/f/mqabbbbq" method="POST" class="space-y-4">
+
+  <input type="hidden" name="_redirect" value="file:///C:/Users/peter/Pictures/weblap_verseny/weblap_verseny/weblapppp/wox/koszono.html">
+
+  <div>
+    <label for="name" class="block text-gray-700 mb-1">Név</label>
+    <input type="text" id="name" name="name" required
+           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+  </div>
+  <div>
+    <label for="email" class="block text-gray-700 mb-1">Email</label>
+    <input type="email" id="email" name="email" required
+           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+  </div>
+  <div>
+    <label for="message" class="block text-gray-700 mb-1">Üzenet</label>
+    <textarea id="message" name="message" rows="4" required
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+  </div>
+
+  <button type="submit" class="bg-black hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-semibold transition">
+    Üzenet küldése
+  </button>
+</form>
+
+</form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl p-8 max-w-md w-full mx-4">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold">Login to Your Account</h3>
+                <button id="close-login" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="space-y-4">
+                <div>
+                    <label for="login-email" class="block text-gray-700 mb-1">Email</label>
+                    <input type="email" id="login-email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
+                <div>
+                    <label for="login-password" class="block text-gray-700 mb-1">Password</label>
+                    <input type="password" id="login-password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="remember" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                        <label for="remember" class="ml-2 block text-gray-700">Remember me</label>
+                    </div>
+                    <a href="#" class="text-indigo-600 hover:text-indigo-800 text-sm">Forgot password?</a>
+                </div>
+                <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg font-semibold transition">
+                    Login
+                </button>
+            </form>
+            <div class="mt-4 text-center">
+                <p class="text-gray-600">Don't have an account? <a href="#" class="text-indigo-600 hover:text-indigo-800 font-semibold">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-dumbbell mr-2"></i>
+                        WOX Wirtual
+                    </h3>
+                    <p class="text-gray-400">"WOX ~ Az Egyediség, a Luxus új fokmérője. Innovatív edzésmódszereket fejlesztünk, amelyek védjegye, hogy teljes értékűek, idő-hatékonyak, változatosak. Jellemzőink: Minőségi géppark, újító módszertan ~ és látványvilág, hightech eszközök alkalmazása! Célunk: Az edzésélmények fokozása, markáns & különc stílusok megalkotása ~ bármely edzéscélhoz igazodva!"
+</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#wox" class="text-gray-400 hover:text-white">WOX</a></li>
+                        <li><a href="#wox-plus" class="text-gray-400 hover:text-white">WOX+</a></li>
+                        <li><a href="#diet" class="text-gray-400 hover:text-white">WOXDiet</a></li>
+                        <li><a href="#tv" class="text-gray-400 hover:text-white">WOXTV</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#family" class="text-gray-400 hover:text-white">Family Tree</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Press</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Cookie Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">GDPR</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 WOX Wirtual. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+     
+    </script>
+</body>
+</html>
